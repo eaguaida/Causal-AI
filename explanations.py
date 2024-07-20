@@ -40,10 +40,13 @@ class RISE(nn.Module):
         self.N = N
         self.p1 = p1
 
-    def load_masks(self, filepath):
+    def load_masks(self, filepath, p1, s):
         self.masks = np.load(filepath)
         self.masks = torch.from_numpy(self.masks).float().cuda()
         self.N = self.masks.shape[0]
+        self.p1 = p1
+        self.s = s
+
 
     def visualize_masked_image(self, combined_image, index):
         plt.figure()
